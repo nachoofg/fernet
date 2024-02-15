@@ -42,5 +42,9 @@ export class ApiController {
   }
 
   @Patch('/:username')
-  updateUser(@Param('username') user: string, @Body() res: string) {}
+  async updateUser(@Param('username') user: string, @Body() res: ApiDto) {
+    return await this.apiService.updateUser(user, res).catch((err) => {
+      return err;
+    });
+  }
 }
